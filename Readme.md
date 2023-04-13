@@ -13,7 +13,7 @@ This example demonstrates how to use the [ASPxLoadingPanel](https://docs.devexpr
 
 ![Custom Loading Panel](loading-panel.png)
 
-The [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel) control includes a built-in loading panel, however you can implement a custom panel in the following way:
+The [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel) control includes a built-in loading panel. However, you can implement a custom panel in the following way:
 
 1. Set the [SettingsLoadingPanel.Enabled](https://docs.devexpress.com/AspNet/DevExpress.Web.SettingsLoadingPanel.Enabled) property to `false` to disable the default panel.
     
@@ -31,7 +31,7 @@ The [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCa
     </dx:ASPxLoadingPanel>
     ```
 
-3. Handle the callback panel's [BeginCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.BeginCallback) and [EndCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.EndCallback) events to show and hide the customloading panel respectively.
+3. Handle the callback panel's [BeginCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.BeginCallback) and [EndCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.EndCallback) events to show and hide the custom loading panel, respectively.
 
     ```aspx
     <dx:ASPxCallbackPanel ID="CallbackPanel" ClientInstanceName="CallbackPanel" ...>
