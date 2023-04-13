@@ -3,21 +3,53 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T228855)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
-* [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
-<!-- default file list end -->
-# How to implement a custom loading panel for the ASPxCallbackPanel control
+# Loading Panel for ASP.NET Web Forms - How to implement a custom loading panel for the ASPxCallbackPanel control
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/t228855/)**
 <!-- run online end -->
 
+This example demonstrates how to use the [ASPxLoadingPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxLoadingPanel) control to implement a custom loading panel for the [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel) control.
 
-<p>The <a href="https://documentation.devexpress.com/#AspNet/clsDevExpressWebASPxCallbackPaneltopic">ASPxCallbackPanel</a>  control provides a built-in loading panel, however you can implement a custom one. For this purpose, the default panel is hidden by setting the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebSettingsLoadingPanel_Enabledtopic">SettingsLoadingPanel.Enabled</a> property to false. The custom panel is implemented using the <a href="https://documentation.devexpress.com/#AspNet/clsDevExpressWebASPxLoadingPaneltopic">ASPxLoadingPanel</a>  control. The callback panel's <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientCallbackPanel_BeginCallbacktopic">ASPxClientCallbackPanel.BeginCallback</a>  and <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebScriptsASPxClientCallbackPanel_EndCallbacktopic">ASPxClientCallbackPanel.EndCallback</a>  client-side events are used to show and hide the loading panel respectively.</p>
-<p>Additionally, this example demonstrates how to add, modify, and hide controls in the ASPxCallbackPanel control in the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxCallbackPanel_Callbacktopic">ASPxCallbackPanel.Callback</a>  event handler.</p>
+![Custom Loading Panel](loading-panel.png)
 
-<br/>
+The [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel) control includes a built-in loading panel. However, you can implement a custom panel in the following way:
 
+1. Set the [SettingsLoadingPanel.Enabled](https://docs.devexpress.com/AspNet/DevExpress.Web.SettingsLoadingPanel.Enabled) property to `false` to disable the default panel.
+    
+    ```aspx
+    <dx:ASPxCallbackPanel ID="CallbackPanel" ClientInstanceName="CallbackPanel" ...>
+        <SettingsLoadingPanel Enabled="false" />
+        ...
+    ```
+2. Use the [ASPxLoadingPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxLoadingPanel) control to implement a custom loading panel.
 
+    ```aspx
+    <dx:ASPxLoadingPanel ID="LoadingPanel" ClientInstanceName="LoadingPanel" runat="server"
+        Modal="true" HorizontalAlign="Center" VerticalAlign="Middle">
+        <Image Url="Images/load.gif" Height="50px" Width="50px"></Image>
+    </dx:ASPxLoadingPanel>
+    ```
+
+3. Handle the callback panel's [BeginCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.BeginCallback) and [EndCallback](https://docs.devexpress.com/AspNet/js-ASPxClientCallbackPanel.EndCallback) events to show and hide the custom loading panel, respectively.
+
+    ```aspx
+    <dx:ASPxCallbackPanel ID="CallbackPanel" ClientInstanceName="CallbackPanel" ...>
+        <ClientSideEvents BeginCallback="OnBeginCallback" EndCallback="OnEndCallback" />
+        ...
+    ```
+    ```js
+    function OnBeginCallback(s, e) {
+        LoadingPanel.Show();
+    };
+    function OnEndCallback(s, e) {
+        LoadingPanel.Hide();
+    };
+    ```
+
+Additionally, this example demonstrates how to add, modify, and hide controls in the `ASPxCallbackPanel` control in the [Callback](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel.Callback) event handler.
+
+## Files to Review
+
+* [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
+* [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
