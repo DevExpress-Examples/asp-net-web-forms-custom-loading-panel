@@ -5,9 +5,6 @@
 <!-- default badges end -->
 
 # Loading Panel for ASP.NET Web Forms - How to implement a custom loading panel for the ASPxCallbackPanel control
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/128566657/)**
-<!-- run online end -->
 
 This example demonstrates how to use the [ASPxLoadingPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxLoadingPanel) control to implement a custom loading panel for the [ASPxCallbackPanel](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxCallbackPanel) control.
 
